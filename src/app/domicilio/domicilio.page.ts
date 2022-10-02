@@ -92,26 +92,21 @@ export class DomicilioPage implements OnInit {
     //this.showLoading2();
     this.coberturaService.getCobertura().subscribe(
       (data:any)=>{
-        console.log("coberturas")
-        console.log(data)
         data.forEach((element: any) => {
           if (element.zona!="") {
             var coords = JSON.parse(element.zona);
             var poligono = this.makePolygon(coords, "blue");
             poligono.setMap(this.map);
             seEncuentra = google.maps.geometry.poly.containsLocation(this.map.getCenter(), poligono);
-            console.log(seEncuentra)
             color = seEncuentra ? "blue" : "red";
             this.verificarPosicion(this.map.getCenter(), color);
             if(color!="red"){
-              console.log(element.envio)
               this.envio = element.envio;
             }
             var $this = this;
             google.maps.event.addListener(poligono, 'click', function (e) {
               $this.verificarPosicion(e.latLng, "blue");
               $this.envio = element.envio;
-              console.log("verificando Posicion Actual, envio", this.envio)
             });
           }
 
@@ -125,7 +120,6 @@ export class DomicilioPage implements OnInit {
             color = seEncuentra ? "blue" : "red";
             this.verificarPosicion(this.map.getCenter(), color);
             if(color!="red"){
-              console.log(element.envio)
               this.envio = element.envio;
             }
           }
