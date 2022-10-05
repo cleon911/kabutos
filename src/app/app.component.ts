@@ -13,6 +13,7 @@ import { IncorrectoPage } from './aviso/incorrecto/incorrecto.page';
 import { IonContent } from '@ionic/angular';
 import { FooterPage } from 'src/app/footer/footer.page'
 import { FcmService } from './servicios/fcm.service';
+import { NotificacionesService } from './servicios/notificaciones.service';
 
 declare var window;
 
@@ -34,7 +35,8 @@ export class AppComponent {
     private alert: AlertController,
     private modalCtrl: ModalController,
     private firebase: FirebaseX,
-    private footer: FooterPage
+    private footer: FooterPage,
+    private notificacionesService: NotificacionesService,
   ) {
     this.initializeApp();
   }
@@ -81,11 +83,12 @@ export class AppComponent {
               };
               this.router.navigate(['/footer/historial/detalle-historial'], navigationExtras);
             } 
-            if (data.image) {
+            this.imagen(data)
+            /*if (data.image) {
               this.notificacion(data.titulo, data.mensaje, data.image);
             } else {
               this.notificacion(data.titulo, data.mensaje, "");
-            }
+            }*/
           } else {
             window.footer.datos();
           }
@@ -98,6 +101,24 @@ export class AppComponent {
     });
   }
 
+
+  imagen(data: any) {
+    this.notificacionesService.getNotificacion(data.titulo).subscribe((res: any) => {
+      //return res;
+      let noti = res[0];
+      console.log("noti",noti)
+      if(noti.hasOwnProperty("imagen")){
+        this.storage.set("imagenNoti", noti.imagen)
+        console.log("notificacion")
+        console.log(this.storage.get("imagenNoti"))
+        if (this.storage.get("imagenNoti")) {
+          let image: any = null;
+          this.notificacion(data.titulo, data.mensaje, noti.imagen==null?"":noti.imagen);
+        }
+      }
+    });
+
+  }
   public name: String = "";
   public lastname: String = "";
   private fullname: String = "";
