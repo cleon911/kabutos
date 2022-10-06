@@ -36,6 +36,17 @@ export class NotificacionesService {
 
  }
 
+ getNotificacion(titulo: any) {
+  const headers = {
+    'Accept': 'application/json, text/plain',
+    'Content-Type': 'application/json'
+  }
+  titulo = titulo.split(' ').join('%20')
+  console.log(this.baseUrl+'notificaciones/' + titulo)
+ return this.http.get(this.baseUrl+'notificaciones/' + titulo,{'headers':headers})      
+
+}
+
  actualizarEstado(estado: string):Observable<any>{
   const headers = {
     'Accept': 'application/json, text/plain',
