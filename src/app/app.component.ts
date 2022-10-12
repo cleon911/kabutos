@@ -82,8 +82,12 @@ export class AppComponent {
                 }
               };
               this.router.navigate(['/footer/historial/detalle-historial'], navigationExtras);
-            } 
-            this.imagen(data)
+            }
+            if(data.titulo=="Pedido despachado" || data.titulo=="Pedido enviado" || data.titulo=="Pedido entregado"){
+              this.notificacion(data.titulo, data.mensaje, "");
+            }else {
+              this.imagen(data)
+            }
             /*if (data.image) {
               this.notificacion(data.titulo, data.mensaje, data.image);
             } else {
