@@ -22,6 +22,7 @@ export class PerfilPage implements OnInit {
   private correo: string = "";
   perfil: any;
   loading: any;
+  codigo_unico:any;
   url;
   date = "";
   id;
@@ -38,7 +39,6 @@ export class PerfilPage implements OnInit {
   ) { }
 
   ngOnInit() {
-
   }
 
   ionViewDidEnter() {
@@ -53,10 +53,23 @@ export class PerfilPage implements OnInit {
     });
 
   }
+  copiar(codigo){
+    console.log("funciona el click",codigo);
+    navigator.clipboard.writeText(codigo);
+    alert("Copiado al Portapapeles!")
+  }
 
   datos() {
     this.storage.get('perfil').then((val) => {
-
+      let perf=val;
+      let id=perf.id;
+      console.log(val)
+      console.log(id)
+      this.perfilService.getCodigo(id).subscribe((data) => {
+        console.log("respuesta",data)
+        this.codigo_unico=data;
+      })
+      //console.log(val)
       if (val == null) {
         this.storage.get('correo').then((val) => {
           this.correo = val;

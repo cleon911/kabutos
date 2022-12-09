@@ -9,6 +9,7 @@ export class HistorialService {
 
   baseUrl :string= "https://cabutoshop.pythonanywhere.com/movil/";
 
+  
   constructor(
     private http: HttpClient
   	) { }
@@ -35,7 +36,7 @@ export class HistorialService {
       'Content-Type': 'application/json'
     }
     const body = JSON.stringify(info);
-    return this.http.post(this.baseUrl+'guardarPedido/',body,{'headers':headers})
+    return this.http.post(this.baseUrl+'guardarPedido2/',body,{'headers':headers})
   }
   cancelarPedido(info):Observable<any>{
     const headers = {
@@ -43,7 +44,7 @@ export class HistorialService {
       'Content-Type': 'application/json'
     }
     const body = JSON.stringify(info);
-    return this.http.post(this.baseUrl+'cancelarPedido/',body,{'headers':headers})
+    return this.http.post(this.baseUrl+'cancelarPedido2/',body,{'headers':headers})
   }
 
   pagarPedido(info):Observable<any>{
@@ -69,5 +70,31 @@ export class HistorialService {
     }
     const body = JSON.stringify(info);
     return this.http.post(this.baseUrl+'calificarPedido/',body,{'headers':headers})
+  }
+  eliminarCarrito(info):Observable<any>{
+    const headers = {
+      'Accept': 'application/json, text/plain',
+      'Content-Type': 'application/json'
+    }
+    const body = JSON.stringify(info);
+    return this.http.post(this.baseUrl+'eliminarCarrito/',body,{'headers':headers})
+  }
+
+  crearTarjetaRegaloMonto(infoTarjeta):Observable<any>{
+    const headers = {
+      'Accept': 'application/json, text/plain',
+      'Content-Type': 'application/json'
+    }
+    const body = JSON.stringify(infoTarjeta);
+    return this.http.post(this.baseUrl+'crearTarjetaRegaloMonto/',infoTarjeta,{'headers': headers});
+  }
+
+  crearTarjetaRegaloproducto(infoTarjeta):Observable<any>{
+    const headers = {
+      'Accept': 'application/json, text/plain',
+      'Content-Type': 'application/json'
+    }
+    const body = JSON.stringify(infoTarjeta);
+    return this.http.post(this.baseUrl+'crearTarjetaRegaloproducto/',infoTarjeta,{'headers': headers});
   }
 }

@@ -25,7 +25,7 @@ export class EditarPerfilPage implements OnInit {
   perfil: any;
   loading: any;
   imagenUrl;
-  file: any
+  file:any;
   constructor(
     private storage: Storage,
     public perfilService: PerfilService,
@@ -89,11 +89,12 @@ export class EditarPerfilPage implements OnInit {
     formData.append("fechaNac",this.perfil.fechaNac);
     formData.append("url",this.formData.get("file"))
     this.file = this.formData.get("file")
-    
+
     if (this.file!= null){
       this.file = this.file.name
     }
-    
+
+
     form = form.value;
     if(form.nombre == ''|| form.apellido == '' || form.cedula == '' ){
       this.mensajeIncorrecto("Campos Incompletos","Por favor complete los campos Nombre y Apellido");
@@ -125,8 +126,8 @@ export class EditarPerfilPage implements OnInit {
     )
     .subscribe(
       data => {
+        console.log(data);
         if(data.valid == "ok"){
-
           if(this.file!= null){
             console.log("file dentro",this.file)
             this.file = "/media/"+this.file
@@ -134,7 +135,7 @@ export class EditarPerfilPage implements OnInit {
           else {
             this.file = this.perfil.imagen
           }
-          
+
           this.perfil.url =this.file
           this.perfil.url =  "https://cabutoshop.pythonanywhere.com" + this.perfil.url
           console.log(this.perfil.url)

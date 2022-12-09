@@ -1,5 +1,8 @@
+<style>
+
+</style>
 <ion-content>
-    <ion-refresher slot="fixed" (ionRefresh)="datos($event)">
+    <ion-refresher slot="fixed" (ionRefresh)="datos($event,null)">
         <ion-refresher-content></ion-refresher-content>
     </ion-refresher>
     <div class="contenedor-page">
@@ -48,7 +51,10 @@
                         </div>
                         <div class="contener-columna-centrar">
                             <div class="precio">
-                                <h4 name="precio">${{productos.precio}}</h4>
+                                <h4 name="precio">${{productos.precio}} AQUI</h4>
+                            </div>
+                            <div class="favorito">
+                                
                             </div>
                             <div class="carrito">
                                 <img src="../assets/img/carrito_activo.png" height="23"
@@ -60,10 +66,8 @@
             </div>
         </div>
     </div>
-    <ion-infinite-scroll threshold="100px" (ionInfinite)="cargandoSiguientes($event)">
-    <ion-infinite-scroll-content
-      loadingSpinner="dots" 
-      loadingText = "Cargando...">
+    <ion-infinite-scroll *ngIf="flag==true" threshold="100px" (ionInfinite)="cargandoSiguientes($event)">
+    <ion-infinite-scroll-content>
     </ion-infinite-scroll-content>
     </ion-infinite-scroll>
 </ion-content>

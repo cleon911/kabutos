@@ -1,0 +1,29 @@
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="pantalla($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <div class="titulo_atras">
+    <img class="atras" src="../assets/img/atras_naranja.png" size=12 (click)="atras()">
+  </div>
+  <div class="contenedor">
+    <div class="contenedor-titulo">
+      <ion-label class="titulo">Historial de Cupones</ion-label>
+    </div>
+    <div class="contenedor-cupones" *ngFor="let cupones of cupon">
+      <div class="interior">
+      <div class="nombre">{{cupones.nombre}}</div>
+      <div class="descripcion">{{cupones.descripcion}}</div>
+      <div class="descripcion">
+          <h2>Canjeado el:</h2> <h6>{{ cupones.fecha | date:'dd/MM/yyyy' }}</h6>
+          
+        </div>
+</div>
+      <div class="contenedor-imagen" id={{cupones.nombre}}>
+        <img class="imagen" src="http://cabutoshop.pythonanywhere.com{{cupones.imagen}}">
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+
+<!--<img name="imagen" src="../assets/img/cupon1.png"  >-->

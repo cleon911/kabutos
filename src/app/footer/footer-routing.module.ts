@@ -133,6 +133,34 @@ const routes: Routes = [
           }
         ]
       },
+      {
+        path: 'codigos',
+        loadChildren: () => import('../codigos/codigos.module').then( m => m.CodigosPageModule)
+      },
+      {
+        path: 'tarjetas-de-regalo',
+        loadChildren: () => import('../tarjetas-de-regalo/tarjetas-de-regalo.module').then( m => m.TarjetasDeRegaloPageModule)
+      },
+      {
+        path: 'hacer-regalo',
+        loadChildren: () => import('../hacer-regalo/hacer-regalo.module').then( m => m.HacerRegaloPageModule)
+      },
+      {
+        path: 'hacer-regalo-escoger',
+        loadChildren: () => import('../hacer-regalo-escoger/hacer-regalo-escoger.module').then( m => m.HacerRegaloEscogerPageModule)
+      },
+      {
+        path: 'hacer-regalo-monto',
+        loadChildren: () => import('../hacer-regalo-monto/hacer-regalo-monto.module').then( m => m.HacerRegaloMontoPageModule)
+      },
+      {
+        path: 'hacer-regalo-producto',
+        loadChildren: () => import('../hacer-regalo-producto/hacer-regalo-producto.module').then( m => m.HacerRegaloProductoPageModule)
+      },
+      {
+        path: 'cupones-carrito',
+        loadChildren: () => import('../cupones-carrito/cupones-carrito.module').then( m => m.CuponesCarritoPageModule)
+      },
     ]
   },
   {

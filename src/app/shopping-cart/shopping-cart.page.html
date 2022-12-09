@@ -11,6 +11,7 @@
         <ion-label style="color:#FE3A00;font-size: x-large;padding-left: 10px; margin-top: 0">$</ion-label>
         <div class="A_pagar" id="A_pagar" *ngIf="total">{{total}}</div>
       </div>
+      <div class="A_pagar_header" *ngIf="politecnico">-10%</div>
     </div>
 
 
@@ -29,11 +30,11 @@
             </div>
             <div class="producto-carrito">
               <img src="../assets/img/restar.png" width="10" height="3" class="btn-producto" id="menos"
-                (click)=quitar(productos.id_unico)>
+                (click)=quitar(productos.id_unico,productos.nombre_producto)>
             
               <div id="{{productos.id_unico}}" class="cantidad">{{productos.cantidad}}</div>
               <img src="../assets/img/agregar.png" width="10" height="10" class="btn-producto" id="mas"
-                (click)=agregar(productos.id_unico,productos.suma)>
+                (click)=agregar(productos.id_unico,productos.suma,productos.nombre_producto)>
       
               </div>
             <div class="precio">
@@ -60,10 +61,10 @@
             </div>
             <div class="producto-carrito">
               <img src="../assets/img/agregar.png" width="10" height="10" class="btn-producto" id="mas"
-                (click)=agregar(ofert.id_unico,ofert.cantidad)>
+                (click)=agregar(ofert.id_unico,ofert.cantidad,null)>
               <div tag="barra" id="{{ofert.id_unico}}" class="cantidad">{{ofert.cantidad_oferta}}</div>
               <img src="../assets/img/restar.png" width="10" height="3" class="btn-producto" id="menos"
-                (click)=quitar(ofert.id_unico)>
+                (click)=quitar(ofert.id_unico,null)>
             </div>
             <div class="precio">
               <p>$</p><p name="precio" class="subtotal" id="{{ofert.id_unico}}">{{ofert.subtotal_oferta| number : '1.2-2'}}</p>
@@ -89,10 +90,10 @@
             </div>
             <div class="producto-carrito">
               <img src="../assets/img/agregar.png" width="10" height="10" class="btn-producto" id="mas"
-                (click)=agregar(combo.id_unico,combo.cantidad)>
+                (click)=agregar(combo.id_unico,combo.cantidad,null)>
               <div tag="barra" id="{{combo.id_unico}}" class="cantidad">{{combo.cantidad_combo}}</div>
               <img src="../assets/img/restar.png" width="10" height="3" class="btn-producto" id="menos"
-                (click)=quitar(combo.id_unico)>
+                (click)=quitar(combo.id_unico,null)>
             </div>
             <div class="precio">
               <p>$</p>
@@ -117,12 +118,12 @@
             </div>
             <div class="producto-carrito">
               <img src="../assets/img/agregar.png" style="visibility:hidden" width="10" height="10" class="btn-producto"
-                id="mas" (click)=agregar(cupons.id_unico,1)>
+                id="mas" (click)=agregar(cupons.id_unico,1,null)>
               <!--<input type="text" tag = "barra" name="" id="{{productos.nombre_producto}}" disabled="true" class="cantidad" placeholder="{{productos.cantidad}}" value ={{productos.cantidad}} />-->
               <div id="{{cupons.id_unico}}" class="cantidad">{{cupons.cantidad_cupon}}</div>
               <!--<input type="text" tag = "barra" name="" id="{{productos.nombre_producto}}" disabled="true" class="cantidad" placeholder="{{cantidadInput}}" value  = "{{cantidadInput}}" >-->
               <img src="../assets/img/restar.png" style="visibility:hidden" width="10" height="3" class="btn-producto"
-                id="menos" (click)=quitar(cupons.id_unico)>
+                id="menos" (click)=quitar(cupons.id_unico,null)>
             </div>
             <div class="precio" style="visibility:hidden">
               <p>$</p>
@@ -134,12 +135,69 @@
         </div>
       </div>
     </div>
+
+    <div *ngIf="tarMontLen > 0">
+      <div class="contener-producto" *ngFor="let tarjeta of tarjetas">
+        <div class="div-producto" id="{{tarjeta.id_tarjeta}}">
+          <div class="borrar_content"><img src="../assets/img/borrar.png" class="borrar"
+              (click)="eliminar(tarjeta.id_tarjeta,tarjeta.id_unico,tarjeta.cantidad_tarjeta)"></div>
+            <div class="producto">
+              <img name="imagen" src="https://cdn-icons-png.flaticon.com/512/3663/3663716.png">
+            </div>
+          <div class="contener-columna">
+            <div class="nombre">
+              <h6 class="nombre-producto" name="nombre">Tarjeta de regalo de: {{tarjeta.monto_tarjeta}}usd.</h6>
+            </div>
+            <div class="producto-carrito">
+              <img src="../assets/img/agregar.png" style="visibility:hidden" width="10" height="10" class="btn-producto"
+                id="mas" (click)=agregar(tarjeta.id_unico,1,null)>
+              <div id="{{tarjeta.id_unico}}" class="cantidad">1</div>
+              <img src="../assets/img/restar.png" style="visibility:hidden" width="10" height="3" class="btn-producto" id="menos" (click)=quitar(tarjeta.id_unico,null)>
+            </div>
+            <div class="precio" >
+              <p>$</p>
+              <h4 name="precio" class="subtotal" id="{{tarjeta.id_unico}}">{{tarjeta.subtotal_tarjeta| number : '1.2-2'}}</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="tarMontLen2 > 0">
+      <div class="contener-producto" *ngFor="let tarjeta of tarjetas2">
+        <div class="div-producto" id="{{tarjeta.id_tarjeta}}">
+          <div class="borrar_content"><img src="../assets/img/borrar.png" class="borrar"
+              (click)="eliminar(tarjeta.id_tarjeta,tarjeta.id_unico,tarjeta.cantidad_tarjeta)"></div>
+            <div class="producto">
+              <img name="imagen" src="https://cdn-icons-png.flaticon.com/512/3663/3663716.png">
+            </div>
+          <div class="contener-columna">
+            <div class="nombre">
+              <h6 class="nombre-producto" name="nombre">Tarjeta de regalo de: {{tarjeta.monto_tarjeta}}usd.</h6>
+            </div>
+            <div class="producto-carrito">
+              <img src="../assets/img/agregar.png" style="visibility:hidden" width="10" height="10" class="btn-producto"
+                id="mas" (click)=agregar(tarjeta.id_unico,1,null)>
+              <div id="{{tarjeta.id_unico}}" class="cantidad">1</div>
+              <img src="../assets/img/restar.png" style="visibility:hidden" width="10" height="3" class="btn-producto" id="menos" (click)=quitar(tarjeta.id_unico,null)>
+            </div>
+            <div class="precio" >
+              <p>$</p>
+              <h4 name="precio" class="subtotal" id="{{tarjeta.id_unico}}">{{tarjeta.subtotal_tarjeta| number : '1.2-2'}}</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="btns">
+      <button ion-button size="large" (click)="cupones()">
+        Agregar Cupón
+      </button>
       <button ion-button icon-end (click)="pagar()">
         Continuar 
         <img src="../assets/img/continuar.png" width="10" height="15">
       </button>
     </div>
-
   </div>
 </ion-content>

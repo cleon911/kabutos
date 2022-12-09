@@ -8,11 +8,36 @@ import { Tarjeta } from '../modelo/tarjeta'
   providedIn: 'root'
 })
 export class PerfilService {
+
+  //baseUrl :string= "http://127.0.0.1:8000/movil/";
   baseUrl :string= "https://cabutoshop.pythonanywhere.com/movil/";
 
   constructor(
     private http: HttpClient
   ) { }
+
+  getCodigo(id:string){
+    const httpOptions = {
+      headers: new HttpHeaders({
+          'Accept': 'application/json, text/plain',
+          'Content-Type':  'application/json',
+        })
+      };
+    let parametro= new HttpParams().set('id',id);
+    console.log(id)
+    return this.http.get(this.baseUrl+'getCodigo/',{params:parametro, headers:httpOptions.headers});
+  }
+
+  getPerfiles(){
+    const httpOptions = {
+      headers: new HttpHeaders({
+          'Accept': 'application/json, text/plain',
+          'Content-Type':  'application/json',
+        })
+      };
+    return this.http.get(this.baseUrl+'cliente2/',{headers:httpOptions.headers});
+
+  }
 
   getPerfil(correo: string){
     let parametro= new HttpParams().set('correo',correo);
@@ -37,9 +62,7 @@ export class PerfilService {
     }
     const body = JSON.stringify(user);
     return this.http.post(this.baseUrl+'quitarusuario/',user,{'headers': headers});
-
   }
-
 
   //pruebas de guardado de tarjeta
   //se supone que ya funciona al 100%
@@ -74,6 +97,5 @@ export class PerfilService {
     const body = JSON.stringify(credencial);
     return this.http.post(this.baseUrl+'tarjeta/del/',credencial,{'headers': headers});
   }
-
 
 }
