@@ -1,0 +1,15 @@
+<ion-content padding text-center style="text-align: center !important;">
+  <div class="fondo">
+    <div class = "btn-salir"><img src="../assets/img/salir.png" (click)=salir()></div>
+    <div class="img-cabu">
+      <img src="../../assets/img/logo.png" height="38" >
+    </div>
+    <label class="hoverable perfil" for="fileInput">
+      <img [src]="url ? url : '../assets/img/avatar_perfil2.png'"> 
+    </label>
+    <ion-label class = "titulo">{{titulo}}</ion-label>
+    <p class="codigo"> CÓDIGO DE USUARIO: {{mensaje}}</p>
+    <div class="contenedor"><img class="descargar" src="../../assets/img/descargar.png" (click)="copiar(mensaje)"> <img class="compartir" src="../../assets/img/compartir.png" (click)="compartir()"></div>
+    
+  </div>
+</ion-content>
