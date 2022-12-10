@@ -14,7 +14,7 @@ import { finalize } from 'rxjs/operators';
 import { AnimationOptions } from '@ionic/angular/providers/nav-controller';
 import { exit } from 'process';
 import { computeStackId } from '@ionic/angular/directives/navigation/stack-utils';
-import { Console } from 'console';
+//import { Console } from 'console';
 declare var window;
 
 @Component({
@@ -37,6 +37,7 @@ export class ShoppingCartPage implements OnInit {
   user: any;
   modificado = false;
   total: number  = 0.00;
+  totalOriginal: number = 0.00;
   prodLen: number = 0;
   oferLen: number = 0;
   comLen: number = 0;
@@ -223,10 +224,11 @@ export class ShoppingCartPage implements OnInit {
     }
     
     ttotal = ototal + ctotal + ptotal;
-
+    this.totalOriginal = ttotal;
     if(this.politecnico){
       ttotal=ttotal*0.9
     }
+
     
     if(ttotal<0){
       ttotal=0
@@ -400,6 +402,7 @@ export class ShoppingCartPage implements OnInit {
       this.total = 0.00;
       return 0.00;
     } else {
+    this.totalOriginal = tot;
       if(this.politecnico){
         tot=tot*0.9
       }
