@@ -40,9 +40,10 @@
         <p>Regalo de {{tarjeta.emisor}}:</p>
       </div>
       <div class="contenedor2"  id={{tarjeta.nombre}}>
-        <div class="descripcion">Descripcion: {{tarjeta.descripcion}}</div>
+        <div class="descripcion">Descripción: {{tarjeta.descripcion}}</div>
         <br>
         <div class="monto">Monto: ${{tarjeta.monto}}</div>
+        <div class="fecha">Enviado el: {{tarjeta.fecha | date:'dd/MM/yyyy'}}</div>
       </div>
     </div>
 
@@ -52,10 +53,11 @@
       </div>
       <div class="nombre"><p>Regalo de: {{tarjeta2.emisor}}</p></div>
       <div class="contenedor2"  id={{tarjeta2.nombre}}>
-        <div class="descripcion">Descripcion: {{tarjeta2.descripcion}}</div>
+        <div class="descripcion">Descripción: {{tarjeta2.descripcion}}</div>
         <br>
         <div class="productos">Productos: {{tarjeta2.listaprod}}</div>
         <!--<div class="monto">Monto: ${{tarjeta2.monto}}</div>-->
+        <div class="fecha">Enviado el: {{tarjeta2.fecha | date:'dd/MM/yyyy'}}</div>
       </div>
     </div>
   </div>
