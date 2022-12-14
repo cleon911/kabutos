@@ -224,7 +224,7 @@ export class ShoppingCartPage implements OnInit {
     }
     
     ttotal = ototal + ctotal + ptotal;
-    this.totalOriginal = ttotal;
+    this.totalOriginal = ttotal.toFixed(2);
     if(this.politecnico){
       ttotal=ttotal*0.9
     }
@@ -402,7 +402,7 @@ export class ShoppingCartPage implements OnInit {
       this.total = 0.00;
       return 0.00;
     } else {
-    this.totalOriginal = tot;
+    this.totalOriginal = tot.toFixed(2);
       if(this.politecnico){
         tot=tot*0.9
       }
