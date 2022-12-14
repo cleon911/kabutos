@@ -36,8 +36,7 @@ export class CodigounicoPage implements OnInit {
   compartir(mensaje){
     console.log("Ven a comprar en Cabutos! Te comparto mi codigo de Usuario: " + mensaje +" Descargala en AppStore: https://apps.apple.com/bo/app/cabutos/id1637263647 o en GooglePlay: https://play.google.com/store/apps/details?id=io.cabutos.starter.v1&hl=es&gl=US")
     var options = {
-      message: "Ven a comprar en Cabutos! Te comparto mi codigo de Usuario: " + mensaje +" Descargala en AppStore: https://apps.apple.com/bo/app/cabutos/id1637263647 o en GooglePlay: https://play.google.com/store/apps/details?id=io.cabutos.starter.v1&hl=es&gl=US",
-      url: "https://www.instagram.com/cabutos/?hl=es",
+      message: "¡Hola! " + mensaje +" es mi código de Usuario Cabutos, el cuál puedes usar de manera muy fácil, ingresando al APP, para enviarme una tarjeta de regalos virtual o productos seleccionados.\nRecuerda que el amor es con hechos y no solo con palabras😌 Para mayor información puedes contactarte al 0988 277 349"
     };
     this.socialSharing.shareWithOptions(options);
     
