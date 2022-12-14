@@ -40,8 +40,11 @@
       <div class="contenedor2"  id={{tarjeta.nombre}}>
         <div class="descripcion">Descripción: {{tarjeta.descripcion}}</div>
         <br>
-        <div class="monto">Monto: ${{tarjeta.monto}}</div>
-        <div class="fecha">Enviado el: {{tarjeta.fecha | date:'dd/MM/yyyy'}}</div>
+        <div class="bottom">
+          <div class="monto">Monto: ${{tarjeta.monto}}</div>
+          <div class="fecha">{{tarjeta.fecha | date:'dd/MM/yyyy'}}</div>
+        </div>
+        
       </div>
     </div>
 
@@ -49,13 +52,20 @@
       <div class="agregar-imagen" id="Tarjeta2{{tarjeta2.id}}">
         <img name="agregar" src="../assets/img/agregar_3.png" (click)=agregar2(tarjeta2.id)>
       </div>
-      <div class="nombre"><p>Regalo de: {{tarjeta2.emisor}}</p></div>
+      <div class="nombre">
+        <img src="../assets/img/OWgift.png" >
+        <p>Regalo de: {{tarjeta2.emisor}}</p>
+      </div>
       <div class="contenedor2"  id={{tarjeta2.nombre}}>
         <div class="descripcion">Descripción: {{tarjeta2.descripcion}}</div>
         <br>
+        <div class="bottom">
         <div class="productos">Productos: {{tarjeta2.listaprod}}</div>
         <!--<div class="monto">Monto: ${{tarjeta2.monto}}</div>-->
-        <div class="fecha">Enviado el: {{tarjeta2.fecha | date:'dd/MM/yyyy'}}</div>
+        <div class="fecha">{{tarjeta2.fecha | date:'dd/MM/yyyy'}}</div>
+
+        </div>
+        
       </div>
     </div>
   </div>
