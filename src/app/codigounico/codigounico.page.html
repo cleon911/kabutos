@@ -6,11 +6,13 @@
     <div class="img-cabu">
       <img src="../../assets/img/logo.png" height="38" >
     </div>
-    <label class="hoverable perfil" for="fileInput">
-      <img [src]="url ? url : '../../assets/img/logo_cod.png'"> 
-    </label>
+    <div>
+      <label class="hoverable perfil" for="fileInput">
+        <img class="logop" [src]="url ? url : '../../assets/img/logo_cod.png'"> 
+      </label>
+      <img class="compartir" src="../../assets/img/compartir.png" (click)="compartir(mensaje)">
+    </div>
     <ion-label class = "titulo">{{titulo}}</ion-label>
-    <div class="contenedor"><img class="compartir" src="../../assets/img/compartir.png" (click)="compartir(mensaje)"></div>
     <p class="codigo" id="codigo"> CÓDIGO DE USUARIO: {{mensaje}}</p>
     <div class="espacio"></div>
   </div>

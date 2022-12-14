@@ -2,14 +2,15 @@
     background: rgb(191,43,5);
     background: linear-gradient(90deg, rgba(191,43,5,1) 7%, rgba(194,26,8,1) 24%, rgba(155,42,7,1) 46%, rgba(147,56,4,1) 81%, rgba(170,88,0,1) 100%);
 }
-.hoverable > img {
+.logop{
     height: 100%;
     width: 100%;
     padding: 0%;
     border-radius: 50%;
     border: 3px solid #2f00bb;
-  }
-  .hoverable{
+}
+
+.hoverable{
     display: block;
     cursor: pointer;
     height: 100px;
@@ -36,9 +37,10 @@
 
 .compartir{
     text-align: right !important;
-    margin: 0px 0px 0px 0px;
-    height: 3rem;
-    width: 3rem;
+    margin-top: -300px;
+    margin-left: 95px;
+    height: 3.5rem;
+    width: 3.5rem;
 }
 
 
@@ -74,12 +76,16 @@
 
 
 .compartir:hover{
-    -moz-box-shadow: 0 0 15px rgba(255, 230, 0, 0.897);
-    -webkit-box-shadow: 0 0 15px rgba(255, 230, 0, 0.897);
-    box-shadow: 0 0 15px rgba(255, 230, 0, 0.897);
+    -moz-box-shadow: 0 0 10px #2f00bb;
+    -webkit-box-shadow: 0 0 10px #2f00bb;
+    box-shadow: 0 0 10px #2f00bb;
     border-radius: 50%;
 }
 
 .espacio{
-    padding: 5px;
+    padding: 20px;
+}
+
+.cuerpo{
+    padding: 10px;
 }

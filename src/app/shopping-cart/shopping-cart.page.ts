@@ -727,4 +727,9 @@ export class ShoppingCartPage implements OnInit {
     this.storage.set('total', this.total);
     this.router.navigateByUrl('/footer/cupones', { replaceUrl: true });
   }
+  productos(){
+    this.carrito()
+    this.storage.set('total', this.total);
+    this.router.navigateByUrl('/footer/producto', { replaceUrl: true });
+  }
 }
