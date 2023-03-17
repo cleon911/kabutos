@@ -10,7 +10,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ShoppingCartPageModule } from './shopping-cart/shopping-cart.module';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import {ProductoService} from '../app/servicios/producto.service';
 import { AuthModule } from  './auth/auth.module';
@@ -28,6 +28,7 @@ import {ModalPage} from '././modal/modal.page';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
 import { IonicStorageModule } from '@ionic/storage';
 import { FirebaseX } from '@ionic-native/firebase-x/ngx';
+import { AuthInterceptor } from './auth-interceptor.interceptor';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ driverOrder: ['indexeddb', 'sqlite', 'websql']
     NativeStorage,
     HTTP,
     FooterPage,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    { provide: HTTP_INTERCEPTORS,useClass: AuthInterceptor,multi: true} 
   ],
   bootstrap: [AppComponent],
 })
